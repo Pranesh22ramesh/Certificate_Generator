@@ -1,0 +1,324 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* 
+  Deep Teal / Cyber Theme 
+  Overrides standard Tailwind colors to match the User's Requested Image
+*/
+
+@layer base {
+  :root {
+    /* Theme Base Colors */
+    --background: 196 65% 8%;
+    --foreground: 190 40% 98%;
+    --primary: 190 100% 50%;
+  }
+
+  body {
+    @apply bg-slate-900 text-slate-50 antialiased selection:bg-cyan-500/30 selection:text-cyan-200;
+  }
+}
+
+/* THEME OVERRIDES - MAPPING TO IMAGE COLORS */
+@layer utilities {
+
+  /* Replace Slate-900 (Background) with Deep Teal */
+  .bg-slate-900 {
+    background-color: #05161A !important;
+    /* Deepest Teal */
+  }
+
+  .bg-slate-950 {
+    background-color: #030e11 !important;
+    /* Almost Black Teal */
+  }
+
+  .bg-slate-800 {
+    background-color: #0a252c !important;
+    /* Lighter Teal Surface */
+  }
+
+  /* Replace Indigo/Sky (Primary) with Vivid Cyan */
+  .bg-indigo-600,
+  .bg-sky-600,
+  .bg-blue-600,
+  .bg-purple-600 {
+    background-color: #00C2FF !important;
+    /* Image Cyan */
+    color: #000000 !important;
+    /* Black text on bright cyan */
+  }
+
+  .text-indigo-400,
+  .text-sky-400,
+  .text-blue-400,
+  .text-purple-400 {
+    color: #00C2FF !important;
+  }
+
+  /* Fix Dark Gradients */
+  .bg-indigo-900,
+  .bg-purple-900,
+  .bg-sky-900 {
+    background-color: #082f3d !important;
+  }
+
+  .border-indigo-500,
+  .border-sky-500,
+  .border-purple-500 {
+    border-color: #00C2FF !important;
+  }
+
+  /* Gradient Stops Override */
+  .from-indigo-500,
+  .from-purple-500 {
+    --tw-gradient-from: #00C2FF !important;
+  }
+
+  .to-purple-600,
+  .to-indigo-600 {
+    --tw-gradient-to: #00A3D9 !important;
+  }
+
+  .via-indigo-500 {
+    --tw-gradient-via: #00B2EB !important;
+  }
+
+  .to-white {
+    --tw-gradient-to: #ffffff !important;
+  }
+
+  /* Glass Effects */
+  .dark-glass {
+    @apply backdrop-blur-xl;
+    background-color: rgba(10, 37, 44, 0.6);
+    border: 1px solid rgba(0, 194, 255, 0.1);
+  }
+}
+
+/* Custom Component Classes */
+@layer components {
+  .page-container {
+    @apply min-h-screen pt-20 pb-12 px-4 sm:px-6 lg:px-8;
+    background-color: #05161A;
+  }
+
+  .btn-primary {
+    @apply hover:brightness-110 text-black font-bold py-3 px-6 rounded-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0.5 flex items-center justify-center gap-2;
+    background-color: #00C2FF;
+    /* Cyan */
+    box-shadow: 0 0 20px rgba(0, 194, 255, 0.3);
+  }
+
+  .card {
+    @apply rounded-2xl shadow-xl;
+    background-color: #0a252c;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .input-field {
+    @apply w-full text-white rounded-xl px-4 py-3 placeholder-slate-500 outline-none transition-all;
+    background-color: #071e26;
+    border: 1px solid #1a3d48;
+  }
+
+  .input-field:focus {
+    border-color: #00C2FF;
+    box-shadow: 0 0 0 1px #00C2FF;
+  }
+
+  .heading-hero {
+    @apply font-black tracking-tight text-white;
+  }
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Animations */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #05161A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0F303B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00C2FF;
+}
+
+/* Custom Background Dots */
+.bg-dots {
+  background-image: radial-gradient(rgba(0, 194, 255, 0.2) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* NEW ANIMATIONS                                                             */
+/* -------------------------------------------------------------------------- */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(0, 194, 255, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(0, 194, 255, 0.5);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* Utility for staggering animations */
+.delay-100 {
+  animation-delay: 100ms;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.hover-glow:hover {
+  animation: pulse-glow 2s infinite;
+}
